@@ -1,0 +1,2 @@
+# Azeotte
+Azeotte Discord Bot
