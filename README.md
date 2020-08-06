@@ -1,7 +1,7 @@
 # Azeotte
 Azeotte Discord Bot
 
-#How To Use
+# How To Use
 If you wish to use this code for your own bot, follow these steps:
 
 1.Install python 3.7+
