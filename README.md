@@ -1,5 +1,5 @@
 # Azeotte
-Azeotte Discord Bot
+Azeotte Discord Bot Coded In Python With The Discord API Discord.py
 
 # How To Use
 If you wish to use this code for your own bot, follow these steps:
