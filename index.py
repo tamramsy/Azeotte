@@ -9,19 +9,21 @@ token = "your token here"
 
 @client.event
 async def on_ready():
-    print('Bot is working!')
+    print('Logged in as {}!'.format(client.name))
 
 @client.command(help = "Repeats what you say.")
-async def echo(ctx, *args):
-    output = ''
-    for word in args:
-        output += word
-        output += ' '
-    await ctx.send(output)
+async def echo(ctx,*,message):
+    await ctx.send(message)
 
 @client.command(help = "Flips a coin, heads or tails.")
-async def coinflip(ctx):
-    await ctx.send(random.choice(["Heads!", "Tails!"]))
+async def coinflip(ctx, times: Int=1):
+    flips=[]
+    if times == 1:
+        await ctx.send(random.choice(["Heads!", "Tails!"]))
+    elif times >= 2:
+        for i in range(times):
+            flips.append(random.choice(['H','T']))
+        await ctx.send("Flipped {} times and got {}".format(times,str(flips)))
 
 @client.command(help = "Displays info about the bot.")
 async def info(ctx):
@@ -33,7 +35,10 @@ async def info(ctx):
 
 @client.command(help = "Forces the bot to leave the server.")
 async def leaveserver(ctx):
-    await ctx.guild.leave()
+    if ctx.author.guild_permissions.manage_server:
+        await ctx.guild.leave()
+    else:
+        await ctx.send("You need the manage server permission to do that!")
 
 @client.command(help = "Gets the invite for the current server.")
 async def invite(ctx):
